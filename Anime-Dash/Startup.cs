@@ -1,3 +1,4 @@
+using Anime_Dash.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,10 @@ namespace Anime_Dash
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Anime_Dash", Version = "v1" });
@@ -40,8 +44,6 @@ namespace Anime_Dash
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Anime_Dash v1"));
             }
 
             app.UseHttpsRedirection();
@@ -54,6 +56,8 @@ namespace Anime_Dash
             {
                 endpoints.MapControllers();
             });
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Anime_Dash v1"));
         }
     }
 }
