@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Anime_Dash.Models
 {
-    public class dbContext : DbContext
+    public class dbAnimeContext : DbContext
     {
-        public dbContext(DbContextOptions <dbContext> options) 
+        public dbAnimeContext(DbContextOptions<DbContext> options) 
             : base(options) 
         {
         }
