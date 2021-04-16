@@ -28,14 +28,14 @@ namespace Anime_Dash
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DbContext>(
-        options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+            services.AddDbContext<dbAnimeContext>(
+        options => options.UseSqlServer("DefaultConnection"));
 
 
 
             services.AddAuthorization();
             services.AddControllers();
-            //services.BuildServiceProvider().GetService<dbContext>().Database.Migrate();
+            services.BuildServiceProvider().GetService<dbAnimeContext>().Database.Migrate();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Anime_Dash", Version = "v1" });
