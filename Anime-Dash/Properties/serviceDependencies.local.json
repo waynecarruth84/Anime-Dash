@@ -4,9 +4,9 @@
       "type": "secrets.user"
     },
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/anime-dashdbserver/databases/Anime-Dash_db",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/animedash/databases/Anime",
       "type": "mssql.azure",
-      "connectionId": "DefaultConnection",
+      "connectionId": "animedash",
       "secretStore": "LocalSecretsFile"
     }
   }
