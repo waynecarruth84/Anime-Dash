@@ -3,14 +3,16 @@ using Anime_Dash.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Anime_Dash.Migrations
 {
     [DbContext(typeof(dbAnimeContext))]
-    partial class dbAnimeContextModelSnapshot : ModelSnapshot
+    [Migration("20210417143908_identity_insert_on")]
+    partial class identity_insert_on
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,9 +23,7 @@ namespace Anime_Dash.Migrations
             modelBuilder.Entity("Anime_Dash.Models.Anime", b =>
                 {
                     b.Property<long>("animeid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
