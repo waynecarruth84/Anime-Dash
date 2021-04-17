@@ -8,7 +8,7 @@ namespace Anime_Dash.Models
 {
     public class dbAnimeContext : DbContext
     {
-        public dbAnimeContext(DbContextOptions<DbContext> options) 
+        public dbAnimeContext(DbContextOptions<dbAnimeContext> options) 
             : base(options) 
         {
         }

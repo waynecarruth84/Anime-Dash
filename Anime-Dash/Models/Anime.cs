@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +8,9 @@ namespace Anime_Dash.Models
 {
     public class Anime
     {
-        public long id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long animeid { get; set; }
+        // public long id { get; set; }
         public string Name { get; set; }
         public string genre { get; set; }
         public string description { get; set; }

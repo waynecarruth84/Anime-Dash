@@ -3,14 +3,16 @@ using Anime_Dash.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Anime_Dash.Migrations
 {
     [DbContext(typeof(dbAnimeContext))]
-    partial class dbAnimeContextModelSnapshot : ModelSnapshot
+    [Migration("20210417135358_update_id")]
+    partial class update_id
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

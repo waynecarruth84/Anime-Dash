@@ -40,14 +40,15 @@ namespace Anime_Dash.Controllers
         }
         */
         //post
-        
+
+        [ActionName("GetAsync")]
         [HttpPost]
         public async Task<ActionResult<Anime>> PostAnime(Anime anime)
         {
             _context.AnimeItems.Add(anime);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAnime", new { id = anime.id }, anime);
+            return CreatedAtAction("GetAnime", new { id = anime.animeid }, anime);
         }
 
 
