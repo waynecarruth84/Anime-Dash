@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Anime_Dash.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Anime_Dash.Controllers
 {
@@ -27,20 +28,19 @@ namespace Anime_Dash.Controllers
         }
 
         //get api/anime/5
-        /*
-        [HttpGet]
+
+        [HttpGet("id")]
         public async Task<ActionResult<Anime>> GetAnime(long id)
         {
             var anime = await _context.AnimeItems.FindAsync(id);
-            if(anime == null)
+            if (anime == null)
             {
                 return NotFound();
             }
             return anime;
         }
-        */
-        //post
 
+        //post
         [ActionName("GetAsync")]
         [HttpPost]
         public async Task<ActionResult<Anime>> PostAnime(Anime anime)
@@ -50,8 +50,7 @@ namespace Anime_Dash.Controllers
 
             return CreatedAtAction("GetAnime", new { id = anime.animeid }, anime);
         }
-
-
+        
         // delete
         [HttpDelete("id")]
         public async Task<ActionResult<Anime>> DeleteAnime(long id)
@@ -67,7 +66,40 @@ namespace Anime_Dash.Controllers
 
             return anime;
         }
+        
+        //update
+        [HttpPut("id")]
+        public async Task<IActionResult> PutAnime(long animeid, Anime anime)
+        {
+            if(animeid != anime.animeid)
+            {
+                return BadRequest();
+            }
+            _context.Entry(anime).State = EntityState.Modified;
 
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException) 
+            {
+                if (!animeExists(animeid))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+        
+
+        private bool animeExists(long id)
+        {
+            return _context.AnimeItems.Any(e => e.animeid == id);
+        }
 
     }
         
