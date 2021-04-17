@@ -19,12 +19,12 @@ namespace Anime_Dash.Controllers
         {
             _context = context;
         }
-        
+
         //GET: api/Animes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Anime>>> GetAnimeItems()
         {
-        return await _context.AnimeItems.ToListAsync();
+            return await _context.AnimeItems.ToListAsync();
         }
 
         //get api/anime/5
@@ -50,7 +50,23 @@ namespace Anime_Dash.Controllers
 
             return CreatedAtAction("GetAnime", new { id = anime.animeid }, anime);
         }
+        
+        // delete
+        [HttpDelete("id")]
+        public async Task<ActionResult<Anime>> DeleteAnime(long id)
+        {
+            var anime = await _context.AnimeItems.FindAsync(id);
+            if (anime == null)
+            {
+                return NotFound();
+            }
 
+            _context.AnimeItems.Remove(anime);
+            await _context.SaveChangesAsync();
+
+            return anime;
+        }
+        
         //update
         [HttpPut("id")]
         public async Task<IActionResult> PutAnime(long animeid, Anime anime)

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Anime_Dash</RootNamespace>
+    <UserSecretsId>d0aeab8a-4021-46bb-bd3d-ab3d81e24364</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
