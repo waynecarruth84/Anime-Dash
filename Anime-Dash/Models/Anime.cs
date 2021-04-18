@@ -8,7 +8,7 @@ namespace Anime_Dash.Models
 {
     public class Anime
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
         public long animeid { get; set; }
         // public long id { get; set; }
         public string Name { get; set; }
